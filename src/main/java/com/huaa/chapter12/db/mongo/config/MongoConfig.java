@@ -1,13 +1,10 @@
-package com.huaa.chapter12.db.mongo;
+package com.huaa.chapter12.db.mongo.config;
 
+import com.huaa.chapter12.db.mongo.dao.repo.OrderRepository;
 import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClientFactory;
 import com.mongodb.client.MongoClients;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
-import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 /**
@@ -17,11 +14,8 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
  * @date 2019/10/6 17:10
  */
 @Configuration
-@EnableMongoRepositories(basePackages = "orders.db")
+@EnableMongoRepositories(basePackageClasses = OrderRepository.class)
 public class MongoConfig extends AbstractMongoClientConfiguration {
-    /**
-     *  todo unknown basePackages meas?
-     */
 
     @Override
     protected String getDatabaseName() {
@@ -30,7 +24,7 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
 
     @Override
     public MongoClient mongoClient() {
-        String url = "mongodb://10.27.20.177:27017,10.27.20.178:27017";
+        String url = "mongodb://192.168.0.104:27017";
         return MongoClients.create(url);
     }
 }
