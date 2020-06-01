@@ -24,6 +24,7 @@
         <module>learning-spring-webmvc</module>
         <module>learning-spring-all</module>
         <module>learning-spring-webflux</module>
+        <module>learning-rest-client</module>
     </modules>
 
     <dependencies>
